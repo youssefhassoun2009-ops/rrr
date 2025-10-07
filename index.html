@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Youssef Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+  background-color: #0f051e;
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* 🧭 الحاوية العامة */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 🧭 الهيدر والناف بار */
+header {
+  background-color: transparent;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}
+
+nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-links li a {
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  transition: 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.3);
+  color: #f901fc;
+}
+
+/* 🟣 زر عام */
+.btn {
+  padding: 12px 28px;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  border-radius: 30px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px #f901fc;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #f901fc;
+}
+
+/* زر بديل */
+.btn.alt {
+  background: linear-gradient(to right, #f901fc, #4200fc);
+  margin-left: 15px;
+}
+
+/* 🎯 قسم Hero */
+.hero {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 60px 0;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+#typing-text {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.hero-text p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* صورة Hero */
+.hero-image {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 350px;
+  border: 6px solid #f901fc;
+  border-radius: 12px;
+  background-color: #07021a;
+}
+
+/* ✨ أنيميشن دخول */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 📱 استجابة للموبايل */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+    align-items: center;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  #typing-text {
+    font-size: 26px;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+}
+.skills {
+  width: 90%;
+  margin: 80px auto;
+}
+
+.skills h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* الجهة اليسرى: الشرائط */
+.skills-left {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+}
+
+.skill-bar {
+  margin-bottom: 30px;
+}
+
+.skill-bar label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.percent {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.html-icon { color: #ff4d4d; }
+.css-icon { color: #00cfff; }
+.js-icon { color: #facc15; }
+.php-icon { color: #b84dff; }
+
+.bar {
+  background: #222;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 20px;
+  position: relative;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  border-radius: 30px;
+  animation: fillBar 2s ease forwards;
+}
+
+.bar.html span {
+  width: 90%;
+  background: linear-gradient(to right, #ff0000, #ff4d4d);
+}
+
+.bar.css span {
+  width: 83%;
+  background: linear-gradient(to right, #007bff, #00cfff);
+}
+
+.bar.js span {
+  width: 70%;
+  background: linear-gradient(to right, #facc15, #fcd34d);
+}
+
+.bar.php span {
+  width: 60%;
+  background: linear-gradient(to right, #a64dff, #d580ff);
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* الجهة اليمنى: مربعات المهارات */
+.skills-right {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 15px 20px;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(249, 1, 252, 0.2);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.skill-box:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  color: white;
+}
+
+/* 🛠️ قسم الخدمات */
+.services {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(249, 1, 252, 0.1);
+  transition: transform 0.4s ease, opacity 0.6s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1s forwards;
+}
+
+.service-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.service-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.service-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 👤 قسم About */
+.about {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-left h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-left p {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.about-right {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-right img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(249, 1, 252, 0.2);
+}
+
+/* 🚀 قسم المشاريع */
+.projects {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+}
+
+.projects h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(249, 1, 252, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.visit-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.visit-btn i {
+  margin-right: 6px;
+}
+
+.visit-btn:hover {
+  background: linear-gradient(to right, #f901fc, #4200fc);
+}
+
+/* 📱 استجابة للموبايل */
+@media (max-width: 768px) {
+  .skills-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skills-left, .skills-right {
+    max-width: 100%;
+  }
+
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-right img {
+    max-width: 100%;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+footer {
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #0a0115;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer .brand {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(to left, #4200fc, #f901fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.social-row a {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-row a:hover {
+  transform: scale(1.2);
+}
+
+/* 🎨 ألوان الأيقونات */
+.facebook { color: #1877f2; }
+.whatsapp { color: #25d366; }
+.instagram { color: #e1306c; }
+.linkedin { color: #0a66c2; }
+.github { color: #fff; }
+.telegram { color: #0088cc; }
+
+.footer .copyright {
+  font-size: 14px;
+  color: #aaa;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 🧭 Header -->
+    <header id="home">
+      <nav>
+        <a href="#" class="logo">Youssef</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <!-- <li><a href="#">Contact</a></li> -->
+        </ul>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 🎯 Hero Section -->
+    <section class="hero scroll-fade">
+      <div class="hero-text">
+        <h1>Youssef Hassoun</h1>
+        <span id="typing-text"></span>
+        <p>I craft stunning, responsive, and interactive web experiences that blend beauty with functionality.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn">Download CV</a>
+          <a href="#" class="btn alt">Subscribe with us</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="ppp-removebg-preview.png" alt="Youssef Photo" />
+      </div>
+    </section>
+
+    <!-- 🧠 Skills Section -->
+    <section class="skills scroll-fade" id="skills">
+      <h2>My Skills</h2>
+      <div class="skills-wrapper">
+        <div class="skills-left">
+          <div class="skill-bar">
+            <label><i class="fa-brands fa-html5 html-icon"></i> HTML <span class="percent">90%</span></label>
+            <div class="bar html"><span></span></div>
+          </div>
+          <div class="skill-bar">
+            <label><i class="fa-brands fa-css3-alt css-icon"></i> CSS <span class="percent">83%</span></label>
+            <div class="bar css"><span></span></div>
+          </div>
+          <div class="skill-bar">
+            <label><i class="fa-brands fa-js js-icon"></i> JavaScript <span class="percent">70%</span></label>
+            <div class="bar js"><span></span></div>
+          </div>
+          <div class="skill-bar">
+            <label><i class="fa-brands fa-php php-icon"></i> PHP <span class="percent">60%</span></label>
+            <div class="bar php"><span></span></div>
+          </div>
+        </div>
+        <div class="skills-right">
+          <div class="skill-box">Responsive Design</div>
+          <div class="skill-box">Glassmorphism</div>
+          <div class="skill-box">Animated Loaders</div>
+          <div class="skill-box">Interactive UI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🛠️ Services Section -->
+    <section class="services scroll-fade" id="services">
+      <h2>My Services</h2>
+      <div class="service-cards">
+        <div class="service-card">
+          <img src="ui.jpeg" alt="UI/UX Design" />
+          <h3>UI/UX Design</h3>
+          <p>Crafting intuitive and visually stunning interfaces that enhance user experience and engagement across platforms.</p>
+        </div>
+        <div class="service-card">
+          <img src="web.jpeg" alt="Web Development" />
+          <h3>Web Development</h3>
+          <p>Building responsive, high-performance websites using modern technologies and clean, scalable code architecture.</p>
+        </div>
+        <div class="service-card">
+          <img src="mob.jpeg" alt="Mobile Development" />
+          <h3>Mobile Development</h3>
+          <p>Creating sleek and functional mobile applications that deliver seamless experiences on iOS and Android devices.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 👤 About Section -->
+    <section class="about scroll-fade" id="about">
+      <div class="about-left">
+        <h2>About Me</h2>
+        <p>I’m a passionate developer and designer who blends technical precision with visual storytelling. I believe in creating digital experiences that are not only functional but also memorable and elegant. With a strong foundation in frontend development and UI/UX design, I strive to deliver work that inspires and performs.</p>
+      </div>
+      <div class="about-right">
+        <!-- <img src="cert1.jpg" alt="Certificate 1" />
+        <img src="cert2.jpg" alt="Certificate 2" /> -->
+      </div>
+    </section>
+
+    <!-- 🚀 Projects Section -->
+    <section class="projects scroll-fade" id="projects">
+      <h2>My Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="res.jpeg" alt="Project 1" />
+          <h3>restaurant</h3>
+          <a href="https://replit608-max.github.io/restaurant/" class="visit-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site</a>
+        </div>
+        <div class="project-card">
+          <img src="emo.jpg" alt="Project 2" />
+          <h3>E-commerce website</h3>
+          <a href="https://youssefhassoun2009-ops.github.io/shop1/" class="visit-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site</a>
+        </div>
+        <div class="project-card">
+          <img src="sam.jpg" alt="Project 3" />
+          <h3>Portfolio</h3>
+          <a href="https://replit608-max.github.io/sam-design/" class="visit-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site</a>
+        </div>
+       
+      </div>
+    </section>
+  </div>
+
+  <!-- 🧨 قسم ختامي بدون عنوان -->
+<section class="footer">
+  <p class="brand" style="text-align: center;">Code-Blaze للبرمجة والتصميم</p>
+  <div class="social-row">
+    <a href="#"><i class="fa-brands fa-facebook-f facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-whatsapp whatsapp"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-linkedin-in linkedin"></i></a>
+    <a href="#"><i class="fa-brands fa-github github"></i></a>
+    <a href="#"><i class="fa-brands fa-telegram telegram"></i></a>
+  </div>
+  <p class="copyright" style="text-align: center;">جميع الحقوق محفوظة © 2025</p>
+</section>
+  <!-- ✨ Typing Animation Script -->
+  <script>
+    const text = "Full Stack Developer & UI/UX Visionary";
+    const typingSpan = document.getElementById("typing-text");
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        typingSpan.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeText, 80);
+      } else {
+        setTimeout(() => {
+          typingSpan.textContent = "";
+          index = 0;
+          typeText();
+        }, 1500);
+      }
+    }
+
+    typeText();
+  </script>
+
+  <!-- ✨ Scroll Fade Animation -->
+  <script>
+    const scrollElements = document.querySelectorAll(".scroll-fade");
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.3 });
+
+    scrollElements.forEach(el => scrollObserver.observe(el));
+  </script>
+</body>
+</html>
